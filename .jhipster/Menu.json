@@ -1,0 +1,67 @@
+{
+    "name": "Menu",
+    "fields": [
+        {
+            "fieldName": "menuCode",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "icon",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "parentCode",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "acessDeny",
+            "otherEntityRelationshipName": "menu",
+            "relationshipName": "acessdeny"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "menuRole",
+            "otherEntityRelationshipName": "menu",
+            "relationshipName": "menurole"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "screen",
+            "otherEntityRelationshipName": "menu",
+            "relationshipName": "screen",
+            "otherEntityField": "screenCode"
+        }
+    ],
+    "changelogDate": "20190409161524",
+    "entityTableName": "menu",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": [
+        "phanquyenchucnang"
+    ],
+    "microserviceName": "phanquyenchucnang",
+    "enableEntityAudit": true
+}

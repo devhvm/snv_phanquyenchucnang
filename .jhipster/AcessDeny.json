@@ -1,0 +1,34 @@
+{
+    "name": "AcessDeny",
+    "fields": [
+        {
+            "fieldName": "userId",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "menu",
+            "otherEntityRelationshipName": "acessdeny",
+            "relationshipName": "menu",
+            "otherEntityField": "menuCode"
+        }
+    ],
+    "changelogDate": "20190409161526",
+    "entityTableName": "acess_deny",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": [
+        "phanquyenchucnang"
+    ],
+    "microserviceName": "phanquyenchucnang",
+    "enableEntityAudit": true
+}

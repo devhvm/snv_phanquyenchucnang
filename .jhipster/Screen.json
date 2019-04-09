@@ -1,0 +1,47 @@
+{
+    "name": "Screen",
+    "fields": [
+        {
+            "fieldName": "screenCode",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "link",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "menu",
+            "otherEntityRelationshipName": "screen",
+            "relationshipName": "menu"
+        }
+    ],
+    "changelogDate": "20190409161525",
+    "entityTableName": "screen",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": [
+        "phanquyenchucnang"
+    ],
+    "microserviceName": "phanquyenchucnang",
+    "enableEntityAudit": true
+}
