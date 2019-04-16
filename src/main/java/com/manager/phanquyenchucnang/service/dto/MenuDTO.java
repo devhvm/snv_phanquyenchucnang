@@ -6,7 +6,7 @@ import java.util.Objects;
 /**
  * A DTO for the Menu entity.
  */
-public class MenuDTO extends AbstractAuditingDTO implements Serializable {
+public class MenuDTO implements Serializable {
 
     private Long id;
 
@@ -18,9 +18,6 @@ public class MenuDTO extends AbstractAuditingDTO implements Serializable {
 
     @NotNull
     private String icon;
-
-    @NotNull
-    private String parentCode;
 
 
     public Long getId() {
@@ -55,14 +52,6 @@ public class MenuDTO extends AbstractAuditingDTO implements Serializable {
         this.icon = icon;
     }
 
-    public String getParentCode() {
-        return parentCode;
-    }
-
-    public void setParentCode(String parentCode) {
-        this.parentCode = parentCode;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -91,7 +80,6 @@ public class MenuDTO extends AbstractAuditingDTO implements Serializable {
             ", menuCode='" + getMenuCode() + "'" +
             ", name='" + getName() + "'" +
             ", icon='" + getIcon() + "'" +
-            ", parentCode='" + getParentCode() + "'" +
             "}";
     }
 }

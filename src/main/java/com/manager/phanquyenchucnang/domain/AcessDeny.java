@@ -1,6 +1,7 @@
 package com.manager.phanquyenchucnang.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -16,7 +17,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "acess_deny")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class AcessDeny extends AbstractAuditingEntity implements Serializable {
+public class AcessDeny implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
@@ -27,6 +28,10 @@ public class AcessDeny extends AbstractAuditingEntity implements Serializable {
     @NotNull
     @Column(name = "user_id", nullable = false)
     private String userId;
+
+    @ManyToOne
+    @JsonIgnoreProperties("acessdenies")
+    private MenuItem menuItem;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -48,6 +53,19 @@ public class AcessDeny extends AbstractAuditingEntity implements Serializable {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public MenuItem getMenuItem() {
+        return menuItem;
+    }
+
+    public AcessDeny menuItem(MenuItem menuItem) {
+        this.menuItem = menuItem;
+        return this;
+    }
+
+    public void setMenuItem(MenuItem menuItem) {
+        this.menuItem = menuItem;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

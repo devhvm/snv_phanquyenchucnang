@@ -6,12 +6,12 @@ import java.util.Objects;
 /**
  * A DTO for the MenuRole entity.
  */
-public class MenuRoleDTO extends AbstractAuditingDTO implements Serializable {
+public class MenuRoleDTO implements Serializable {
 
     private Long id;
 
     @NotNull
-    private String menuRoleCode;
+    private String menuItemRoleCode;
 
     @NotNull
     private String role;
@@ -19,6 +19,10 @@ public class MenuRoleDTO extends AbstractAuditingDTO implements Serializable {
     @NotNull
     private String name;
 
+
+    private Long menuItemId;
+
+    private String menuItemMenuItemCode;
 
     public Long getId() {
         return id;
@@ -28,12 +32,12 @@ public class MenuRoleDTO extends AbstractAuditingDTO implements Serializable {
         this.id = id;
     }
 
-    public String getMenuRoleCode() {
-        return menuRoleCode;
+    public String getMenuItemRoleCode() {
+        return menuItemRoleCode;
     }
 
-    public void setMenuRoleCode(String menuRoleCode) {
-        this.menuRoleCode = menuRoleCode;
+    public void setMenuItemRoleCode(String menuItemRoleCode) {
+        this.menuItemRoleCode = menuItemRoleCode;
     }
 
     public String getRole() {
@@ -50,6 +54,22 @@ public class MenuRoleDTO extends AbstractAuditingDTO implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Long getMenuItemId() {
+        return menuItemId;
+    }
+
+    public void setMenuItemId(Long menuItemId) {
+        this.menuItemId = menuItemId;
+    }
+
+    public String getMenuItemMenuItemCode() {
+        return menuItemMenuItemCode;
+    }
+
+    public void setMenuItemMenuItemCode(String menuItemMenuItemCode) {
+        this.menuItemMenuItemCode = menuItemMenuItemCode;
     }
 
     @Override
@@ -77,9 +97,11 @@ public class MenuRoleDTO extends AbstractAuditingDTO implements Serializable {
     public String toString() {
         return "MenuRoleDTO{" +
             "id=" + getId() +
-            ", menuRoleCode='" + getMenuRoleCode() + "'" +
+            ", menuItemRoleCode='" + getMenuItemRoleCode() + "'" +
             ", role='" + getRole() + "'" +
             ", name='" + getName() + "'" +
+            ", menuItem=" + getMenuItemId() +
+            ", menuItem='" + getMenuItemMenuItemCode() + "'" +
             "}";
     }
 }

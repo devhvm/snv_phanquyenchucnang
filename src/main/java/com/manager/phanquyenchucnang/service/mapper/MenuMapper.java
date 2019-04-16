@@ -12,6 +12,8 @@ import org.mapstruct.*;
 public interface MenuMapper extends EntityMapper<MenuDTO, Menu> {
 
 
+    @Mapping(target = "menuItems", ignore = true)
+    Menu toEntity(MenuDTO menuDTO);
 
     default Menu fromId(Long id) {
         if (id == null) {

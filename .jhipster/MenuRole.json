@@ -2,7 +2,7 @@
     "name": "MenuRole",
     "fields": [
         {
-            "fieldName": "menuRoleCode",
+            "fieldName": "menuItemRoleCode",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required"
@@ -23,7 +23,15 @@
             ]
         }
     ],
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "menuItem",
+            "otherEntityRelationshipName": "menurole",
+            "relationshipName": "menuItem",
+            "otherEntityField": "menuItemCode"
+        }
+    ],
     "changelogDate": "20190409161527",
     "entityTableName": "menu_role",
     "dto": "mapstruct",
@@ -35,6 +43,5 @@
     "applications": [
         "phanquyenchucnang"
     ],
-    "microserviceName": "phanquyenchucnang",
-    "enableEntityAudit": true
+    "microserviceName": "phanquyenchucnang"
 }

@@ -15,14 +15,14 @@
     <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
 
     <!--
-        Added the entity Menu.
+        Added the entity MenuItem.
     -->
-    <changeSet id="20190409161524-1" author="jhipster">
-        <createTable tableName="menu">
+    <changeSet id="20190416220519-1" author="jhipster">
+        <createTable tableName="menu_item">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="menu_code" type="varchar(255)">
+            <column name="menu_item_code" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
 
@@ -32,6 +32,14 @@
 
             <column name="icon" type="varchar(255)">
                 <constraints nullable="false" />
+            </column>
+
+            <column name="screen_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="menu_id" type="bigint">
+                <constraints nullable="true" />
             </column>
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->

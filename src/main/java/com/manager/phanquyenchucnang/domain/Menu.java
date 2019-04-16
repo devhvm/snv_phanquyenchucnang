@@ -1,6 +1,7 @@
 package com.manager.phanquyenchucnang.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -8,6 +9,8 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -16,7 +19,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "menu")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class Menu extends AbstractAuditingEntity implements Serializable {
+public class Menu implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
@@ -36,10 +39,9 @@ public class Menu extends AbstractAuditingEntity implements Serializable {
     @Column(name = "icon", nullable = false)
     private String icon;
 
-    @NotNull
-    @Column(name = "parent_code", nullable = false)
-    private String parentCode;
-
+    @OneToMany(mappedBy = "menu")
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<MenuItem> menuItems = new HashSet<>();
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -88,17 +90,29 @@ public class Menu extends AbstractAuditingEntity implements Serializable {
         this.icon = icon;
     }
 
-    public String getParentCode() {
-        return parentCode;
+    public Set<MenuItem> getMenuItems() {
+        return menuItems;
     }
 
-    public Menu parentCode(String parentCode) {
-        this.parentCode = parentCode;
+    public Menu menuItems(Set<MenuItem> menuItems) {
+        this.menuItems = menuItems;
         return this;
     }
 
-    public void setParentCode(String parentCode) {
-        this.parentCode = parentCode;
+    public Menu addMenuItem(MenuItem menuItem) {
+        this.menuItems.add(menuItem);
+        menuItem.setMenu(this);
+        return this;
+    }
+
+    public Menu removeMenuItem(MenuItem menuItem) {
+        this.menuItems.remove(menuItem);
+        menuItem.setMenu(null);
+        return this;
+    }
+
+    public void setMenuItems(Set<MenuItem> menuItems) {
+        this.menuItems = menuItems;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -129,7 +143,6 @@ public class Menu extends AbstractAuditingEntity implements Serializable {
             ", menuCode='" + getMenuCode() + "'" +
             ", name='" + getName() + "'" +
             ", icon='" + getIcon() + "'" +
-            ", parentCode='" + getParentCode() + "'" +
             "}";
     }
 }

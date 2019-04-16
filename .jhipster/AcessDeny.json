@@ -9,7 +9,15 @@
             ]
         }
     ],
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "menuItem",
+            "otherEntityRelationshipName": "acessdeny",
+            "relationshipName": "menuItem",
+            "otherEntityField": "menuItemCode"
+        }
+    ],
     "changelogDate": "20190409161526",
     "entityTableName": "acess_deny",
     "dto": "mapstruct",
@@ -21,6 +29,5 @@
     "applications": [
         "phanquyenchucnang"
     ],
-    "microserviceName": "phanquyenchucnang",
-    "enableEntityAudit": true
+    "microserviceName": "phanquyenchucnang"
 }

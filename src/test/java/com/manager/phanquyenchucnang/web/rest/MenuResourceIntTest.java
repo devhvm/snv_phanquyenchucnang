@@ -52,9 +52,6 @@ public class MenuResourceIntTest {
     private static final String DEFAULT_ICON = "AAAAAAAAAA";
     private static final String UPDATED_ICON = "BBBBBBBBBB";
 
-    private static final String DEFAULT_PARENT_CODE = "AAAAAAAAAA";
-    private static final String UPDATED_PARENT_CODE = "BBBBBBBBBB";
-
     @Autowired
     private MenuRepository menuRepository;
 
@@ -105,8 +102,7 @@ public class MenuResourceIntTest {
         Menu menu = new Menu()
             .menuCode(DEFAULT_MENU_CODE)
             .name(DEFAULT_NAME)
-            .icon(DEFAULT_ICON)
-            .parentCode(DEFAULT_PARENT_CODE);
+            .icon(DEFAULT_ICON);
         return menu;
     }
 
@@ -134,7 +130,6 @@ public class MenuResourceIntTest {
         assertThat(testMenu.getMenuCode()).isEqualTo(DEFAULT_MENU_CODE);
         assertThat(testMenu.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testMenu.getIcon()).isEqualTo(DEFAULT_ICON);
-        assertThat(testMenu.getParentCode()).isEqualTo(DEFAULT_PARENT_CODE);
     }
 
     @Test
@@ -216,25 +211,6 @@ public class MenuResourceIntTest {
 
     @Test
     @Transactional
-    public void checkParentCodeIsRequired() throws Exception {
-        int databaseSizeBeforeTest = menuRepository.findAll().size();
-        // set the field null
-        menu.setParentCode(null);
-
-        // Create the Menu, which fails.
-        MenuDTO menuDTO = menuMapper.toDto(menu);
-
-        restMenuMockMvc.perform(post("/api/menus")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(menuDTO)))
-            .andExpect(status().isBadRequest());
-
-        List<Menu> menuList = menuRepository.findAll();
-        assertThat(menuList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
     public void getAllMenus() throws Exception {
         // Initialize the database
         menuRepository.saveAndFlush(menu);
@@ -246,8 +222,7 @@ public class MenuResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(menu.getId().intValue())))
             .andExpect(jsonPath("$.[*].menuCode").value(hasItem(DEFAULT_MENU_CODE.toString())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
-            .andExpect(jsonPath("$.[*].icon").value(hasItem(DEFAULT_ICON.toString())))
-            .andExpect(jsonPath("$.[*].parentCode").value(hasItem(DEFAULT_PARENT_CODE.toString())));
+            .andExpect(jsonPath("$.[*].icon").value(hasItem(DEFAULT_ICON.toString())));
     }
     
     @Test
@@ -263,8 +238,7 @@ public class MenuResourceIntTest {
             .andExpect(jsonPath("$.id").value(menu.getId().intValue()))
             .andExpect(jsonPath("$.menuCode").value(DEFAULT_MENU_CODE.toString()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
-            .andExpect(jsonPath("$.icon").value(DEFAULT_ICON.toString()))
-            .andExpect(jsonPath("$.parentCode").value(DEFAULT_PARENT_CODE.toString()));
+            .andExpect(jsonPath("$.icon").value(DEFAULT_ICON.toString()));
     }
 
     @Test
@@ -290,8 +264,7 @@ public class MenuResourceIntTest {
         updatedMenu
             .menuCode(UPDATED_MENU_CODE)
             .name(UPDATED_NAME)
-            .icon(UPDATED_ICON)
-            .parentCode(UPDATED_PARENT_CODE);
+            .icon(UPDATED_ICON);
         MenuDTO menuDTO = menuMapper.toDto(updatedMenu);
 
         restMenuMockMvc.perform(put("/api/menus")
@@ -306,7 +279,6 @@ public class MenuResourceIntTest {
         assertThat(testMenu.getMenuCode()).isEqualTo(UPDATED_MENU_CODE);
         assertThat(testMenu.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testMenu.getIcon()).isEqualTo(UPDATED_ICON);
-        assertThat(testMenu.getParentCode()).isEqualTo(UPDATED_PARENT_CODE);
     }
 
     @Test

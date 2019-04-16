@@ -36,6 +36,7 @@
   },
   "entities": [
     "Menu",
+    "MenuItem",
     "Screen",
     "AcessDeny",
     "MenuRole"

@@ -12,6 +12,8 @@ import org.mapstruct.*;
 public interface ScreenMapper extends EntityMapper<ScreenDTO, Screen> {
 
 
+    @Mapping(target = "menus", ignore = true)
+    Screen toEntity(ScreenDTO screenDTO);
 
     default Screen fromId(Long id) {
         if (id == null) {
