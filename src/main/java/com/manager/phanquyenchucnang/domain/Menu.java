@@ -1,8 +1,6 @@
 package com.manager.phanquyenchucnang.domain;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -10,8 +8,6 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -20,7 +16,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "menu")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class Menu extends AbstractAuditingEntity implements Serializable {
+public class Menu implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
@@ -43,16 +39,6 @@ public class Menu extends AbstractAuditingEntity implements Serializable {
     @NotNull
     @Column(name = "parent_code", nullable = false)
     private String parentCode;
-
-    @OneToMany(mappedBy = "menu")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<AcessDeny> acessdenies = new HashSet<>();
-    @OneToMany(mappedBy = "menu")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<MenuRole> menuroles = new HashSet<>();
-    @ManyToOne
-    @JsonIgnoreProperties("menus")
-    private Screen screen;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -113,69 +99,6 @@ public class Menu extends AbstractAuditingEntity implements Serializable {
 
     public void setParentCode(String parentCode) {
         this.parentCode = parentCode;
-    }
-
-    public Set<AcessDeny> getAcessdenies() {
-        return acessdenies;
-    }
-
-    public Menu acessdenies(Set<AcessDeny> acessDenies) {
-        this.acessdenies = acessDenies;
-        return this;
-    }
-
-    public Menu addAcessdeny(AcessDeny acessDeny) {
-        this.acessdenies.add(acessDeny);
-        acessDeny.setMenu(this);
-        return this;
-    }
-
-    public Menu removeAcessdeny(AcessDeny acessDeny) {
-        this.acessdenies.remove(acessDeny);
-        acessDeny.setMenu(null);
-        return this;
-    }
-
-    public void setAcessdenies(Set<AcessDeny> acessDenies) {
-        this.acessdenies = acessDenies;
-    }
-
-    public Set<MenuRole> getMenuroles() {
-        return menuroles;
-    }
-
-    public Menu menuroles(Set<MenuRole> menuRoles) {
-        this.menuroles = menuRoles;
-        return this;
-    }
-
-    public Menu addMenurole(MenuRole menuRole) {
-        this.menuroles.add(menuRole);
-        menuRole.setMenu(this);
-        return this;
-    }
-
-    public Menu removeMenurole(MenuRole menuRole) {
-        this.menuroles.remove(menuRole);
-        menuRole.setMenu(null);
-        return this;
-    }
-
-    public void setMenuroles(Set<MenuRole> menuRoles) {
-        this.menuroles = menuRoles;
-    }
-
-    public Screen getScreen() {
-        return screen;
-    }
-
-    public Menu screen(Screen screen) {
-        this.screen = screen;
-        return this;
-    }
-
-    public void setScreen(Screen screen) {
-        this.screen = screen;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

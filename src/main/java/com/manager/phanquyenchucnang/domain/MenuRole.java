@@ -1,7 +1,6 @@
 package com.manager.phanquyenchucnang.domain;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -17,7 +16,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "menu_role")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class MenuRole extends AbstractAuditingEntity implements Serializable {
+public class MenuRole implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
@@ -36,10 +35,6 @@ public class MenuRole extends AbstractAuditingEntity implements Serializable {
     @NotNull
     @Column(name = "name", nullable = false)
     private String name;
-
-    @ManyToOne
-    @JsonIgnoreProperties("menuroles")
-    private Menu menu;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -87,19 +82,6 @@ public class MenuRole extends AbstractAuditingEntity implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Menu getMenu() {
-        return menu;
-    }
-
-    public MenuRole menu(Menu menu) {
-        this.menu = menu;
-        return this;
-    }
-
-    public void setMenu(Menu menu) {
-        this.menu = menu;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

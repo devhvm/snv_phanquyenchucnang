@@ -23,14 +23,7 @@
             ]
         }
     ],
-    "relationships": [
-        {
-            "relationshipType": "one-to-many",
-            "otherEntityName": "menu",
-            "otherEntityRelationshipName": "screen",
-            "relationshipName": "menu"
-        }
-    ],
+    "relationships": [],
     "changelogDate": "20190409161525",
     "entityTableName": "screen",
     "dto": "mapstruct",
@@ -38,10 +31,9 @@
     "service": "serviceClass",
     "jpaMetamodelFiltering": false,
     "fluentMethods": true,
-    "clientRootFolder": "",
+    "clientRootFolder": "phanquyenchucnang",
     "applications": [
         "phanquyenchucnang"
     ],
-    "microserviceName": "phanquyenchucnang",
-    "enableEntityAudit": true
+    "microserviceName": "phanquyenchucnang"
 }

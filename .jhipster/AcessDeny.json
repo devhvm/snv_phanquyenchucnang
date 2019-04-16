@@ -9,15 +9,7 @@
             ]
         }
     ],
-    "relationships": [
-        {
-            "relationshipType": "many-to-one",
-            "otherEntityName": "menu",
-            "otherEntityRelationshipName": "acessdeny",
-            "relationshipName": "menu",
-            "otherEntityField": "menuCode"
-        }
-    ],
+    "relationships": [],
     "changelogDate": "20190409161526",
     "entityTableName": "acess_deny",
     "dto": "mapstruct",
@@ -25,10 +17,9 @@
     "service": "serviceClass",
     "jpaMetamodelFiltering": false,
     "fluentMethods": true,
-    "clientRootFolder": "",
+    "clientRootFolder": "phanquyenchucnang",
     "applications": [
         "phanquyenchucnang"
     ],
-    "microserviceName": "phanquyenchucnang",
-    "enableEntityAudit": true
+    "microserviceName": "phanquyenchucnang"
 }

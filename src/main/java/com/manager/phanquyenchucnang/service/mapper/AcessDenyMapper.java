@@ -8,15 +8,10 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity AcessDeny and its DTO AcessDenyDTO.
  */
-@Mapper(componentModel = "spring", uses = {MenuMapper.class})
+@Mapper(componentModel = "spring", uses = {})
 public interface AcessDenyMapper extends EntityMapper<AcessDenyDTO, AcessDeny> {
 
-    @Mapping(source = "menu.id", target = "menuId")
-    @Mapping(source = "menu.menuCode", target = "menuMenuCode")
-    AcessDenyDTO toDto(AcessDeny acessDeny);
 
-    @Mapping(source = "menuId", target = "menu")
-    AcessDeny toEntity(AcessDenyDTO acessDenyDTO);
 
     default AcessDeny fromId(Long id) {
         if (id == null) {

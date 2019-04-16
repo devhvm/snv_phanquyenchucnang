@@ -1,7 +1,6 @@
 package com.manager.phanquyenchucnang.domain;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -9,8 +8,6 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -19,7 +16,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "screen")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class Screen extends AbstractAuditingEntity implements Serializable {
+public class Screen implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
@@ -39,9 +36,6 @@ public class Screen extends AbstractAuditingEntity implements Serializable {
     @Column(name = "jhi_link", nullable = false)
     private String link;
 
-    @OneToMany(mappedBy = "screen")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Menu> menus = new HashSet<>();
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -88,31 +82,6 @@ public class Screen extends AbstractAuditingEntity implements Serializable {
 
     public void setLink(String link) {
         this.link = link;
-    }
-
-    public Set<Menu> getMenus() {
-        return menus;
-    }
-
-    public Screen menus(Set<Menu> menus) {
-        this.menus = menus;
-        return this;
-    }
-
-    public Screen addMenu(Menu menu) {
-        this.menus.add(menu);
-        menu.setScreen(this);
-        return this;
-    }
-
-    public Screen removeMenu(Menu menu) {
-        this.menus.remove(menu);
-        menu.setScreen(null);
-        return this;
-    }
-
-    public void setMenus(Set<Menu> menus) {
-        this.menus = menus;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

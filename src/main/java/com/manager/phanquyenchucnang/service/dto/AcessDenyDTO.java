@@ -6,17 +6,13 @@ import java.util.Objects;
 /**
  * A DTO for the AcessDeny entity.
  */
-public class AcessDenyDTO extends AbstractAuditingDTO implements Serializable {
+public class AcessDenyDTO implements Serializable {
 
     private Long id;
 
     @NotNull
     private String userId;
 
-
-    private Long menuId;
-
-    private String menuMenuCode;
 
     public Long getId() {
         return id;
@@ -32,22 +28,6 @@ public class AcessDenyDTO extends AbstractAuditingDTO implements Serializable {
 
     public void setUserId(String userId) {
         this.userId = userId;
-    }
-
-    public Long getMenuId() {
-        return menuId;
-    }
-
-    public void setMenuId(Long menuId) {
-        this.menuId = menuId;
-    }
-
-    public String getMenuMenuCode() {
-        return menuMenuCode;
-    }
-
-    public void setMenuMenuCode(String menuMenuCode) {
-        this.menuMenuCode = menuMenuCode;
     }
 
     @Override
@@ -76,8 +56,6 @@ public class AcessDenyDTO extends AbstractAuditingDTO implements Serializable {
         return "AcessDenyDTO{" +
             "id=" + getId() +
             ", userId='" + getUserId() + "'" +
-            ", menu=" + getMenuId() +
-            ", menu='" + getMenuMenuCode() + "'" +
             "}";
     }
 }
