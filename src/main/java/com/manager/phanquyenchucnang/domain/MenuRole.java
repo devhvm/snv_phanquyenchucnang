@@ -16,7 +16,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "menu_role")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class MenuRole implements Serializable {
+public class MenuRole extends AbstractAuditingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     

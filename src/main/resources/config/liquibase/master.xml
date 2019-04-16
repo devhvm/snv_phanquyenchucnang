@@ -9,6 +9,7 @@
     <include file="config/liquibase/changelog/20190409161525_added_entity_Screen.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190409161526_added_entity_AcessDeny.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190409161527_added_entity_MenuRole.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190416021015_added_entity_EntityAuditEvent.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

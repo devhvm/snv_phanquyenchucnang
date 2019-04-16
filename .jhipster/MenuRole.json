@@ -35,5 +35,6 @@
     "applications": [
         "phanquyenchucnang"
     ],
-    "microserviceName": "phanquyenchucnang"
+    "microserviceName": "phanquyenchucnang",
+    "enableEntityAudit": true
 }

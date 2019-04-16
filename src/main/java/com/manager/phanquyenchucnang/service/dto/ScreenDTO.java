@@ -6,7 +6,7 @@ import java.util.Objects;
 /**
  * A DTO for the Screen entity.
  */
-public class ScreenDTO implements Serializable {
+public class ScreenDTO extends AbstractAuditingDTO implements Serializable {
 
     private Long id;
 
