@@ -5,14 +5,15 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20190416225508_added_entity_Menu.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20190416225509_added_entity_MenuItem.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20190416225510_added_entity_Screen.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20190416225511_added_entity_AcessDeny.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20190416225512_added_entity_MenuRole.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190409161524_added_entity_Menu.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190409161525_added_entity_Screen.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190409161526_added_entity_AcessDeny.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190409161527_added_entity_MenuRole.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190416220519_added_entity_MenuItem.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190421084944_added_entity_EntityAuditEvent.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
-    <include file="config/liquibase/changelog/20190416225509_added_entity_constraints_MenuItem.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20190416225511_added_entity_constraints_AcessDeny.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20190416225512_added_entity_constraints_MenuRole.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190409161526_added_entity_constraints_AcessDeny.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190409161527_added_entity_constraints_MenuRole.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190416220519_added_entity_constraints_MenuItem.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>
