@@ -1,8 +1,6 @@
 package com.manager.phanquyenchucnang.domain;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -10,8 +8,6 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -20,7 +16,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "menu_item")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class MenuItem implements Serializable {
+public class MenuItem extends AbstractAuditingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
@@ -36,23 +32,17 @@ public class MenuItem implements Serializable {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @NotNull
-    @Column(name = "icon", nullable = false)
+    @Column(name = "icon")
     private String icon;
 
-    @OneToMany(mappedBy = "menuItem")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<AcessDeny> acessdenies = new HashSet<>();
-    @OneToMany(mappedBy = "menuItem")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<MenuRole> menuroles = new HashSet<>();
-    @ManyToOne
-    @JsonIgnoreProperties("menus")
-    private Screen screen;
+    @Column(name = "parrent_code")
+    private String parrentCode;
 
-    @ManyToOne
-    @JsonIgnoreProperties("menuItems")
-    private Menu menu;
+    @Column(name = "ord_number")
+    private Integer ordNumber;
+
+    @Column(name = "jhi_link")
+    private String link;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -102,80 +92,43 @@ public class MenuItem implements Serializable {
         this.icon = icon;
     }
 
-    public Set<AcessDeny> getAcessdenies() {
-        return acessdenies;
+    public String getParrentCode() {
+        return parrentCode;
     }
 
-    public MenuItem acessdenies(Set<AcessDeny> acessDenies) {
-        this.acessdenies = acessDenies;
+    public MenuItem parrentCode(String parrentCode) {
+        this.parrentCode = parrentCode;
         return this;
     }
 
-    public MenuItem addAcessdeny(AcessDeny acessDeny) {
-        this.acessdenies.add(acessDeny);
-        acessDeny.setMenuItem(this);
+    public void setParrentCode(String parrentCode) {
+        this.parrentCode = parrentCode;
+    }
+
+    public Integer getOrdNumber() {
+        return ordNumber;
+    }
+
+    public MenuItem ordNumber(Integer ordNumber) {
+        this.ordNumber = ordNumber;
         return this;
     }
 
-    public MenuItem removeAcessdeny(AcessDeny acessDeny) {
-        this.acessdenies.remove(acessDeny);
-        acessDeny.setMenuItem(null);
+    public void setOrdNumber(Integer ordNumber) {
+        this.ordNumber = ordNumber;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public MenuItem link(String link) {
+        this.link = link;
         return this;
     }
 
-    public void setAcessdenies(Set<AcessDeny> acessDenies) {
-        this.acessdenies = acessDenies;
-    }
-
-    public Set<MenuRole> getMenuroles() {
-        return menuroles;
-    }
-
-    public MenuItem menuroles(Set<MenuRole> menuRoles) {
-        this.menuroles = menuRoles;
-        return this;
-    }
-
-    public MenuItem addMenurole(MenuRole menuRole) {
-        this.menuroles.add(menuRole);
-        menuRole.setMenuItem(this);
-        return this;
-    }
-
-    public MenuItem removeMenurole(MenuRole menuRole) {
-        this.menuroles.remove(menuRole);
-        menuRole.setMenuItem(null);
-        return this;
-    }
-
-    public void setMenuroles(Set<MenuRole> menuRoles) {
-        this.menuroles = menuRoles;
-    }
-
-    public Screen getScreen() {
-        return screen;
-    }
-
-    public MenuItem screen(Screen screen) {
-        this.screen = screen;
-        return this;
-    }
-
-    public void setScreen(Screen screen) {
-        this.screen = screen;
-    }
-
-    public Menu getMenu() {
-        return menu;
-    }
-
-    public MenuItem menu(Menu menu) {
-        this.menu = menu;
-        return this;
-    }
-
-    public void setMenu(Menu menu) {
-        this.menu = menu;
+    public void setLink(String link) {
+        this.link = link;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -206,6 +159,9 @@ public class MenuItem implements Serializable {
             ", menuItemCode='" + getMenuItemCode() + "'" +
             ", name='" + getName() + "'" +
             ", icon='" + getIcon() + "'" +
+            ", parrentCode='" + getParrentCode() + "'" +
+            ", ordNumber=" + getOrdNumber() +
+            ", link='" + getLink() + "'" +
             "}";
     }
 }
