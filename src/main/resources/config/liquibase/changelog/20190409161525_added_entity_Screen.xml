@@ -15,19 +15,19 @@
     <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
 
     <!--
-        Added the entity AcessDeny.
+        Added the entity Screen.
     -->
-    <changeSet id="20190416225511-1" author="jhipster">
-        <createTable tableName="acess_deny">
+    <changeSet id="20190409161525-1" author="jhipster">
+        <createTable tableName="screen">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="user_id" type="varchar(255)">
+            <column name="screen_code" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
 
-            <column name="menu_item_id" type="bigint">
-                <constraints nullable="true" />
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false" />
             </column>
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
@@ -37,7 +37,7 @@
     
     <!-- Added the entity audit columns -->
     <changeSet id="20190422124916-audit-1" author="jhipster-entity-audit">
-        <addColumn tableName="acess_deny">
+        <addColumn tableName="screen">
             <column name="created_by" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>

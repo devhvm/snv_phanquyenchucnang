@@ -17,50 +17,31 @@
         },
         {
             "fieldName": "icon",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "parrentCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "ordNumber",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "link",
+            "fieldType": "String"
         }
     ],
-    "relationships": [
-        {
-            "relationshipType": "one-to-many",
-            "otherEntityName": "acessDeny",
-            "otherEntityRelationshipName": "menuItem",
-            "relationshipName": "acessdeny"
-        },
-        {
-            "relationshipType": "one-to-many",
-            "otherEntityName": "menuRole",
-            "otherEntityRelationshipName": "menuItem",
-            "relationshipName": "menurole"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "otherEntityName": "screen",
-            "otherEntityRelationshipName": "menu",
-            "relationshipName": "screen",
-            "otherEntityField": "screenCode"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "otherEntityName": "menu",
-            "otherEntityRelationshipName": "menuItem",
-            "relationshipName": "menu",
-            "otherEntityField": "menuCode"
-        }
-    ],
+    "relationships": [],
     "changelogDate": "20190416220519",
     "entityTableName": "menu_item",
-    "dto": "mapstruct",
-    "pagination": "pagination",
-    "service": "serviceClass",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
     "jpaMetamodelFiltering": false,
     "fluentMethods": true,
     "clientRootFolder": "phanquyenchucnang",
-    "applications": [
-        "phanquyenchucnang"
-    ],
-    "microserviceName": "phanquyenchucnang"
+    "applications": "*",
+    "microserviceName": "phanquyenchucnang",
+    "enableEntityAudit": true
 }
