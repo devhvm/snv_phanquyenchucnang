@@ -49,6 +49,9 @@ public class ScreenResourceIntTest {
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBB";
 
+    private static final String DEFAULT_LINK = "AAAAAAAAAA";
+    private static final String UPDATED_LINK = "BBBBBBBBBB";
+
     @Autowired
     private ScreenRepository screenRepository;
 
@@ -98,7 +101,8 @@ public class ScreenResourceIntTest {
     public static Screen createEntity(EntityManager em) {
         Screen screen = new Screen()
             .screenCode(DEFAULT_SCREEN_CODE)
-            .name(DEFAULT_NAME);
+            .name(DEFAULT_NAME)
+            .link(DEFAULT_LINK);
         return screen;
     }
 
@@ -125,6 +129,7 @@ public class ScreenResourceIntTest {
         Screen testScreen = screenList.get(screenList.size() - 1);
         assertThat(testScreen.getScreenCode()).isEqualTo(DEFAULT_SCREEN_CODE);
         assertThat(testScreen.getName()).isEqualTo(DEFAULT_NAME);
+        assertThat(testScreen.getLink()).isEqualTo(DEFAULT_LINK);
     }
 
     @Test
@@ -187,6 +192,25 @@ public class ScreenResourceIntTest {
 
     @Test
     @Transactional
+    public void checkLinkIsRequired() throws Exception {
+        int databaseSizeBeforeTest = screenRepository.findAll().size();
+        // set the field null
+        screen.setLink(null);
+
+        // Create the Screen, which fails.
+        ScreenDTO screenDTO = screenMapper.toDto(screen);
+
+        restScreenMockMvc.perform(post("/api/screens")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(screenDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Screen> screenList = screenRepository.findAll();
+        assertThat(screenList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllScreens() throws Exception {
         // Initialize the database
         screenRepository.saveAndFlush(screen);
@@ -197,7 +221,8 @@ public class ScreenResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(screen.getId().intValue())))
             .andExpect(jsonPath("$.[*].screenCode").value(hasItem(DEFAULT_SCREEN_CODE.toString())))
-            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())));
+            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
+            .andExpect(jsonPath("$.[*].link").value(hasItem(DEFAULT_LINK.toString())));
     }
     
     @Test
@@ -212,7 +237,8 @@ public class ScreenResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(screen.getId().intValue()))
             .andExpect(jsonPath("$.screenCode").value(DEFAULT_SCREEN_CODE.toString()))
-            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()));
+            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
+            .andExpect(jsonPath("$.link").value(DEFAULT_LINK.toString()));
     }
 
     @Test
@@ -237,7 +263,8 @@ public class ScreenResourceIntTest {
         em.detach(updatedScreen);
         updatedScreen
             .screenCode(UPDATED_SCREEN_CODE)
-            .name(UPDATED_NAME);
+            .name(UPDATED_NAME)
+            .link(UPDATED_LINK);
         ScreenDTO screenDTO = screenMapper.toDto(updatedScreen);
 
         restScreenMockMvc.perform(put("/api/screens")
@@ -251,6 +278,7 @@ public class ScreenResourceIntTest {
         Screen testScreen = screenList.get(screenList.size() - 1);
         assertThat(testScreen.getScreenCode()).isEqualTo(UPDATED_SCREEN_CODE);
         assertThat(testScreen.getName()).isEqualTo(UPDATED_NAME);
+        assertThat(testScreen.getLink()).isEqualTo(UPDATED_LINK);
     }
 
     @Test

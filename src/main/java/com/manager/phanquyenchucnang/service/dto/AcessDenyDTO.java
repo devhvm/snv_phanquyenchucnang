@@ -6,7 +6,7 @@ import java.util.Objects;
 /**
  * A DTO for the AcessDeny entity.
  */
-public class AcessDenyDTO extends AbstractAuditingDTO implements Serializable {
+public class AcessDenyDTO implements Serializable {
 
     private Long id;
 

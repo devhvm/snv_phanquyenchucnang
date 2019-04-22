@@ -20,7 +20,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "menu_item")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class MenuItem extends AbstractAuditingEntity implements Serializable {
+public class MenuItem implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
@@ -36,17 +36,9 @@ public class MenuItem extends AbstractAuditingEntity implements Serializable {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "icon")
+    @NotNull
+    @Column(name = "icon", nullable = false)
     private String icon;
-
-    @Column(name = "parrent_code")
-    private String parrentCode;
-
-    @Column(name = "ord_number")
-    private Integer ordNumber;
-
-    @Column(name = "jhi_link")
-    private String link;
 
     @OneToMany(mappedBy = "menuItem")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -108,45 +100,6 @@ public class MenuItem extends AbstractAuditingEntity implements Serializable {
 
     public void setIcon(String icon) {
         this.icon = icon;
-    }
-
-    public String getParrentCode() {
-        return parrentCode;
-    }
-
-    public MenuItem parrentCode(String parrentCode) {
-        this.parrentCode = parrentCode;
-        return this;
-    }
-
-    public void setParrentCode(String parrentCode) {
-        this.parrentCode = parrentCode;
-    }
-
-    public Integer getOrdNumber() {
-        return ordNumber;
-    }
-
-    public MenuItem ordNumber(Integer ordNumber) {
-        this.ordNumber = ordNumber;
-        return this;
-    }
-
-    public void setOrdNumber(Integer ordNumber) {
-        this.ordNumber = ordNumber;
-    }
-
-    public String getLink() {
-        return link;
-    }
-
-    public MenuItem link(String link) {
-        this.link = link;
-        return this;
-    }
-
-    public void setLink(String link) {
-        this.link = link;
     }
 
     public Set<AcessDeny> getAcessdenies() {
@@ -253,9 +206,6 @@ public class MenuItem extends AbstractAuditingEntity implements Serializable {
             ", menuItemCode='" + getMenuItemCode() + "'" +
             ", name='" + getName() + "'" +
             ", icon='" + getIcon() + "'" +
-            ", parrentCode='" + getParrentCode() + "'" +
-            ", ordNumber=" + getOrdNumber() +
-            ", link='" + getLink() + "'" +
             "}";
     }
 }

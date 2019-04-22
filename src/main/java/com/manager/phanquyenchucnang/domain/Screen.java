@@ -19,7 +19,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "screen")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class Screen extends AbstractAuditingEntity implements Serializable {
+public class Screen implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
@@ -34,6 +34,10 @@ public class Screen extends AbstractAuditingEntity implements Serializable {
     @NotNull
     @Column(name = "name", nullable = false)
     private String name;
+
+    @NotNull
+    @Column(name = "jhi_link", nullable = false)
+    private String link;
 
     @OneToMany(mappedBy = "screen")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -71,6 +75,19 @@ public class Screen extends AbstractAuditingEntity implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public Screen link(String link) {
+        this.link = link;
+        return this;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
     }
 
     public Set<MenuItem> getMenus() {
@@ -125,6 +142,7 @@ public class Screen extends AbstractAuditingEntity implements Serializable {
             "id=" + getId() +
             ", screenCode='" + getScreenCode() + "'" +
             ", name='" + getName() + "'" +
+            ", link='" + getLink() + "'" +
             "}";
     }
 }

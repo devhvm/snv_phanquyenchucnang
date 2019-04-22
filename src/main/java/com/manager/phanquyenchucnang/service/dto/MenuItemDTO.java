@@ -6,7 +6,7 @@ import java.util.Objects;
 /**
  * A DTO for the MenuItem entity.
  */
-public class MenuItemDTO extends AbstractAuditingDTO implements Serializable {
+public class MenuItemDTO implements Serializable {
 
     private Long id;
 
@@ -16,13 +16,8 @@ public class MenuItemDTO extends AbstractAuditingDTO implements Serializable {
     @NotNull
     private String name;
 
+    @NotNull
     private String icon;
-
-    private String parrentCode;
-
-    private Integer ordNumber;
-
-    private String link;
 
 
     private Long screenId;
@@ -63,30 +58,6 @@ public class MenuItemDTO extends AbstractAuditingDTO implements Serializable {
 
     public void setIcon(String icon) {
         this.icon = icon;
-    }
-
-    public String getParrentCode() {
-        return parrentCode;
-    }
-
-    public void setParrentCode(String parrentCode) {
-        this.parrentCode = parrentCode;
-    }
-
-    public Integer getOrdNumber() {
-        return ordNumber;
-    }
-
-    public void setOrdNumber(Integer ordNumber) {
-        this.ordNumber = ordNumber;
-    }
-
-    public String getLink() {
-        return link;
-    }
-
-    public void setLink(String link) {
-        this.link = link;
     }
 
     public Long getScreenId() {
@@ -149,9 +120,6 @@ public class MenuItemDTO extends AbstractAuditingDTO implements Serializable {
             ", menuItemCode='" + getMenuItemCode() + "'" +
             ", name='" + getName() + "'" +
             ", icon='" + getIcon() + "'" +
-            ", parrentCode='" + getParrentCode() + "'" +
-            ", ordNumber=" + getOrdNumber() +
-            ", link='" + getLink() + "'" +
             ", screen=" + getScreenId() +
             ", screen='" + getScreenScreenCode() + "'" +
             ", menu=" + getMenuId() +

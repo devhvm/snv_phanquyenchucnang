@@ -17,19 +17,10 @@
         },
         {
             "fieldName": "icon",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "parrentCode",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "ordNumber",
-            "fieldType": "Integer"
-        },
-        {
-            "fieldName": "link",
-            "fieldType": "String"
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
     "relationships": [
@@ -71,6 +62,5 @@
     "applications": [
         "phanquyenchucnang"
     ],
-    "microserviceName": "phanquyenchucnang",
-    "enableEntityAudit": true
+    "microserviceName": "phanquyenchucnang"
 }
