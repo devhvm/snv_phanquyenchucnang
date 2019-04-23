@@ -1,0 +1,39 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="tranminhphuong (generated)" id="1556037578083-1">
+        <addColumn tableName="menu_item">
+            <column name="jhi_link" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="tranminhphuong (generated)" id="1556037578083-2">
+        <addColumn tableName="menu_item">
+            <column name="ord_number" type="integer"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="tranminhphuong (generated)" id="1556037578083-3">
+        <addColumn tableName="menu_item">
+            <column name="parrent_code" type="varchar(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet author="tranminhphuong (generated)" id="1556037578083-4">
+        <dropColumn columnName="jhi_link" tableName="screen"/>
+    </changeSet>
+    <changeSet author="tranminhphuong (generated)" id="1556037578083-5">
+        <dropNotNullConstraint columnDataType="blob" columnName="created_date" tableName="acess_deny"/>
+    </changeSet>
+    <changeSet author="tranminhphuong (generated)" id="1556037578083-6">
+        <dropNotNullConstraint columnDataType="blob" columnName="created_date" tableName="menu"/>
+    </changeSet>
+    <changeSet author="tranminhphuong (generated)" id="1556037578083-7">
+        <dropNotNullConstraint columnDataType="blob" columnName="created_date" tableName="menu_item"/>
+    </changeSet>
+    <changeSet author="tranminhphuong (generated)" id="1556037578083-8">
+        <dropNotNullConstraint columnDataType="blob" columnName="created_date" tableName="menu_role"/>
+    </changeSet>
+    <changeSet author="tranminhphuong (generated)" id="1556037578083-9">
+        <dropNotNullConstraint columnDataType="blob" columnName="created_date" tableName="screen"/>
+    </changeSet>
+    <changeSet author="tranminhphuong (generated)" id="1556037578083-10">
+        <dropNotNullConstraint columnDataType="varchar(255)" columnName="icon" tableName="menu_item"/>
+    </changeSet>
+</databaseChangeLog>
