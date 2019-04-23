@@ -6,7 +6,7 @@ import java.util.Objects;
 /**
  * A DTO for the Screen entity.
  */
-public class ScreenDTO implements Serializable {
+public class ScreenDTO extends AbstractAuditingDTO implements Serializable {
 
     private Long id;
 
@@ -15,9 +15,6 @@ public class ScreenDTO implements Serializable {
 
     @NotNull
     private String name;
-
-    @NotNull
-    private String link;
 
 
     public Long getId() {
@@ -42,14 +39,6 @@ public class ScreenDTO implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getLink() {
-        return link;
-    }
-
-    public void setLink(String link) {
-        this.link = link;
     }
 
     @Override
@@ -79,7 +68,6 @@ public class ScreenDTO implements Serializable {
             "id=" + getId() +
             ", screenCode='" + getScreenCode() + "'" +
             ", name='" + getName() + "'" +
-            ", link='" + getLink() + "'" +
             "}";
     }
 }

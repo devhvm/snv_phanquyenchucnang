@@ -12,9 +12,9 @@ import org.mapstruct.*;
 public interface MenuItemMapper extends EntityMapper<MenuItemDTO, MenuItem> {
 
     @Mapping(source = "screen.id", target = "screenId")
-    @Mapping(source = "screen.screenCode", target = "screenScreenCode")
+    @Mapping(source = "screen.name", target = "screenName")
     @Mapping(source = "menu.id", target = "menuId")
-    @Mapping(source = "menu.menuCode", target = "menuMenuCode")
+    @Mapping(source = "menu.name", target = "menuName")
     MenuItemDTO toDto(MenuItem menuItem);
 
     @Mapping(target = "acessdenies", ignore = true)

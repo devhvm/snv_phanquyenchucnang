@@ -17,10 +17,19 @@
         },
         {
             "fieldName": "icon",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "parrentCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "ordNumber",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "link",
+            "fieldType": "String"
         }
     ],
     "relationships": [
@@ -41,14 +50,14 @@
             "otherEntityName": "screen",
             "otherEntityRelationshipName": "menu",
             "relationshipName": "screen",
-            "otherEntityField": "screenCode"
+            "otherEntityField": "name"
         },
         {
             "relationshipType": "many-to-one",
             "otherEntityName": "menu",
             "otherEntityRelationshipName": "menuItem",
             "relationshipName": "menu",
-            "otherEntityField": "menuCode"
+            "otherEntityField": "name"
         }
     ],
     "changelogDate": "20190416220519",
@@ -62,5 +71,6 @@
     "applications": [
         "phanquyenchucnang"
     ],
-    "microserviceName": "phanquyenchucnang"
+    "microserviceName": "phanquyenchucnang",
+    "enableEntityAudit": true
 }

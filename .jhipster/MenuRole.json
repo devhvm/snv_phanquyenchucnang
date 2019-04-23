@@ -29,7 +29,7 @@
             "otherEntityName": "menuItem",
             "otherEntityRelationshipName": "menurole",
             "relationshipName": "menuItem",
-            "otherEntityField": "menuItemCode"
+            "otherEntityField": "name"
         }
     ],
     "changelogDate": "20190409161527",
@@ -43,5 +43,6 @@
     "applications": [
         "phanquyenchucnang"
     ],
-    "microserviceName": "phanquyenchucnang"
+    "microserviceName": "phanquyenchucnang",
+    "enableEntityAudit": true
 }

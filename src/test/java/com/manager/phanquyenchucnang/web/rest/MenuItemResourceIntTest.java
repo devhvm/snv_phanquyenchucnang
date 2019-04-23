@@ -52,6 +52,15 @@ public class MenuItemResourceIntTest {
     private static final String DEFAULT_ICON = "AAAAAAAAAA";
     private static final String UPDATED_ICON = "BBBBBBBBBB";
 
+    private static final String DEFAULT_PARRENT_CODE = "AAAAAAAAAA";
+    private static final String UPDATED_PARRENT_CODE = "BBBBBBBBBB";
+
+    private static final Integer DEFAULT_ORD_NUMBER = 1;
+    private static final Integer UPDATED_ORD_NUMBER = 2;
+
+    private static final String DEFAULT_LINK = "AAAAAAAAAA";
+    private static final String UPDATED_LINK = "BBBBBBBBBB";
+
     @Autowired
     private MenuItemRepository menuItemRepository;
 
@@ -102,7 +111,10 @@ public class MenuItemResourceIntTest {
         MenuItem menuItem = new MenuItem()
             .menuItemCode(DEFAULT_MENU_ITEM_CODE)
             .name(DEFAULT_NAME)
-            .icon(DEFAULT_ICON);
+            .icon(DEFAULT_ICON)
+            .parrentCode(DEFAULT_PARRENT_CODE)
+            .ordNumber(DEFAULT_ORD_NUMBER)
+            .link(DEFAULT_LINK);
         return menuItem;
     }
 
@@ -130,6 +142,9 @@ public class MenuItemResourceIntTest {
         assertThat(testMenuItem.getMenuItemCode()).isEqualTo(DEFAULT_MENU_ITEM_CODE);
         assertThat(testMenuItem.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testMenuItem.getIcon()).isEqualTo(DEFAULT_ICON);
+        assertThat(testMenuItem.getParrentCode()).isEqualTo(DEFAULT_PARRENT_CODE);
+        assertThat(testMenuItem.getOrdNumber()).isEqualTo(DEFAULT_ORD_NUMBER);
+        assertThat(testMenuItem.getLink()).isEqualTo(DEFAULT_LINK);
     }
 
     @Test
@@ -192,25 +207,6 @@ public class MenuItemResourceIntTest {
 
     @Test
     @Transactional
-    public void checkIconIsRequired() throws Exception {
-        int databaseSizeBeforeTest = menuItemRepository.findAll().size();
-        // set the field null
-        menuItem.setIcon(null);
-
-        // Create the MenuItem, which fails.
-        MenuItemDTO menuItemDTO = menuItemMapper.toDto(menuItem);
-
-        restMenuItemMockMvc.perform(post("/api/menu-items")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(menuItemDTO)))
-            .andExpect(status().isBadRequest());
-
-        List<MenuItem> menuItemList = menuItemRepository.findAll();
-        assertThat(menuItemList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
     public void getAllMenuItems() throws Exception {
         // Initialize the database
         menuItemRepository.saveAndFlush(menuItem);
@@ -222,7 +218,10 @@ public class MenuItemResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(menuItem.getId().intValue())))
             .andExpect(jsonPath("$.[*].menuItemCode").value(hasItem(DEFAULT_MENU_ITEM_CODE.toString())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
-            .andExpect(jsonPath("$.[*].icon").value(hasItem(DEFAULT_ICON.toString())));
+            .andExpect(jsonPath("$.[*].icon").value(hasItem(DEFAULT_ICON.toString())))
+            .andExpect(jsonPath("$.[*].parrentCode").value(hasItem(DEFAULT_PARRENT_CODE.toString())))
+            .andExpect(jsonPath("$.[*].ordNumber").value(hasItem(DEFAULT_ORD_NUMBER)))
+            .andExpect(jsonPath("$.[*].link").value(hasItem(DEFAULT_LINK.toString())));
     }
     
     @Test
@@ -238,7 +237,10 @@ public class MenuItemResourceIntTest {
             .andExpect(jsonPath("$.id").value(menuItem.getId().intValue()))
             .andExpect(jsonPath("$.menuItemCode").value(DEFAULT_MENU_ITEM_CODE.toString()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
-            .andExpect(jsonPath("$.icon").value(DEFAULT_ICON.toString()));
+            .andExpect(jsonPath("$.icon").value(DEFAULT_ICON.toString()))
+            .andExpect(jsonPath("$.parrentCode").value(DEFAULT_PARRENT_CODE.toString()))
+            .andExpect(jsonPath("$.ordNumber").value(DEFAULT_ORD_NUMBER))
+            .andExpect(jsonPath("$.link").value(DEFAULT_LINK.toString()));
     }
 
     @Test
@@ -264,7 +266,10 @@ public class MenuItemResourceIntTest {
         updatedMenuItem
             .menuItemCode(UPDATED_MENU_ITEM_CODE)
             .name(UPDATED_NAME)
-            .icon(UPDATED_ICON);
+            .icon(UPDATED_ICON)
+            .parrentCode(UPDATED_PARRENT_CODE)
+            .ordNumber(UPDATED_ORD_NUMBER)
+            .link(UPDATED_LINK);
         MenuItemDTO menuItemDTO = menuItemMapper.toDto(updatedMenuItem);
 
         restMenuItemMockMvc.perform(put("/api/menu-items")
@@ -279,6 +284,9 @@ public class MenuItemResourceIntTest {
         assertThat(testMenuItem.getMenuItemCode()).isEqualTo(UPDATED_MENU_ITEM_CODE);
         assertThat(testMenuItem.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testMenuItem.getIcon()).isEqualTo(UPDATED_ICON);
+        assertThat(testMenuItem.getParrentCode()).isEqualTo(UPDATED_PARRENT_CODE);
+        assertThat(testMenuItem.getOrdNumber()).isEqualTo(UPDATED_ORD_NUMBER);
+        assertThat(testMenuItem.getLink()).isEqualTo(UPDATED_LINK);
     }
 
     @Test
