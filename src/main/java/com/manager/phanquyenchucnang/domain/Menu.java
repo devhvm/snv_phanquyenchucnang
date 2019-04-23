@@ -19,7 +19,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "menu")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class Menu implements Serializable {
+public class Menu extends AbstractAuditingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     

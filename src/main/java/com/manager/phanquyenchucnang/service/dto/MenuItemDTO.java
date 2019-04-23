@@ -6,7 +6,7 @@ import java.util.Objects;
 /**
  * A DTO for the MenuItem entity.
  */
-public class MenuItemDTO implements Serializable {
+public class MenuItemDTO extends AbstractAuditingDTO implements Serializable {
 
     private Long id;
 
@@ -16,17 +16,22 @@ public class MenuItemDTO implements Serializable {
     @NotNull
     private String name;
 
-    @NotNull
     private String icon;
+
+    private String parrentCode;
+
+    private Integer ordNumber;
+
+    private String link;
 
 
     private Long screenId;
 
-    private String screenScreenCode;
+    private String screenName;
 
     private Long menuId;
 
-    private String menuMenuCode;
+    private String menuName;
 
     public Long getId() {
         return id;
@@ -60,6 +65,30 @@ public class MenuItemDTO implements Serializable {
         this.icon = icon;
     }
 
+    public String getParrentCode() {
+        return parrentCode;
+    }
+
+    public void setParrentCode(String parrentCode) {
+        this.parrentCode = parrentCode;
+    }
+
+    public Integer getOrdNumber() {
+        return ordNumber;
+    }
+
+    public void setOrdNumber(Integer ordNumber) {
+        this.ordNumber = ordNumber;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
     public Long getScreenId() {
         return screenId;
     }
@@ -68,12 +97,12 @@ public class MenuItemDTO implements Serializable {
         this.screenId = screenId;
     }
 
-    public String getScreenScreenCode() {
-        return screenScreenCode;
+    public String getScreenName() {
+        return screenName;
     }
 
-    public void setScreenScreenCode(String screenScreenCode) {
-        this.screenScreenCode = screenScreenCode;
+    public void setScreenName(String screenName) {
+        this.screenName = screenName;
     }
 
     public Long getMenuId() {
@@ -84,12 +113,12 @@ public class MenuItemDTO implements Serializable {
         this.menuId = menuId;
     }
 
-    public String getMenuMenuCode() {
-        return menuMenuCode;
+    public String getMenuName() {
+        return menuName;
     }
 
-    public void setMenuMenuCode(String menuMenuCode) {
-        this.menuMenuCode = menuMenuCode;
+    public void setMenuName(String menuName) {
+        this.menuName = menuName;
     }
 
     @Override
@@ -120,10 +149,13 @@ public class MenuItemDTO implements Serializable {
             ", menuItemCode='" + getMenuItemCode() + "'" +
             ", name='" + getName() + "'" +
             ", icon='" + getIcon() + "'" +
+            ", parrentCode='" + getParrentCode() + "'" +
+            ", ordNumber=" + getOrdNumber() +
+            ", link='" + getLink() + "'" +
             ", screen=" + getScreenId() +
-            ", screen='" + getScreenScreenCode() + "'" +
+            ", screen='" + getScreenName() + "'" +
             ", menu=" + getMenuId() +
-            ", menu='" + getMenuMenuCode() + "'" +
+            ", menu='" + getMenuName() + "'" +
             "}";
     }
 }

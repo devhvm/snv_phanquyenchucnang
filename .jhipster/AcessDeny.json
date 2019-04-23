@@ -15,7 +15,7 @@
             "otherEntityName": "menuItem",
             "otherEntityRelationshipName": "acessdeny",
             "relationshipName": "menuItem",
-            "otherEntityField": "menuItemCode"
+            "otherEntityField": "id"
         }
     ],
     "changelogDate": "20190409161526",
@@ -29,5 +29,6 @@
     "applications": [
         "phanquyenchucnang"
     ],
-    "microserviceName": "phanquyenchucnang"
+    "microserviceName": "phanquyenchucnang",
+    "enableEntityAudit": true
 }

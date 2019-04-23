@@ -10,6 +10,7 @@
     <include file="config/liquibase/changelog/20190416225510_added_entity_Screen.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190416225511_added_entity_AcessDeny.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190416225512_added_entity_MenuRole.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190423162904_added_entity_EntityAuditEvent.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20190416225509_added_entity_constraints_MenuItem.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190416225511_added_entity_constraints_AcessDeny.xml" relativeToChangelogFile="false"/>

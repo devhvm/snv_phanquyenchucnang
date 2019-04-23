@@ -12,7 +12,6 @@ import org.mapstruct.*;
 public interface AcessDenyMapper extends EntityMapper<AcessDenyDTO, AcessDeny> {
 
     @Mapping(source = "menuItem.id", target = "menuItemId")
-    @Mapping(source = "menuItem.menuItemCode", target = "menuItemMenuItemCode")
     AcessDenyDTO toDto(AcessDeny acessDeny);
 
     @Mapping(source = "menuItemId", target = "menuItem")
