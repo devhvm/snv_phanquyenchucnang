@@ -6,7 +6,7 @@ import java.util.Objects;
 /**
  * A DTO for the Menu entity.
  */
-public class MenuDTO extends AbstractAuditingDTO implements Serializable {
+public class MenuDTO implements Serializable {
 
     private Long id;
 

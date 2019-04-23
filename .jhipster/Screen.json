@@ -14,18 +14,33 @@
             "fieldValidateRules": [
                 "required"
             ]
+        },
+        {
+            "fieldName": "link",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "menuItem",
+            "otherEntityRelationshipName": "screen",
+            "relationshipName": "menu"
+        }
+    ],
     "changelogDate": "20190409161525",
     "entityTableName": "screen",
-    "dto": "no",
-    "pagination": "no",
-    "service": "no",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
     "jpaMetamodelFiltering": false,
     "fluentMethods": true,
     "clientRootFolder": "phanquyenchucnang",
-    "applications": "*",
-    "microserviceName": "phanquyenchucnang",
-    "enableEntityAudit": true
+    "applications": [
+        "phanquyenchucnang"
+    ],
+    "microserviceName": "phanquyenchucnang"
 }

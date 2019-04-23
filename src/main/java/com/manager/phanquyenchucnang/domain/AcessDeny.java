@@ -17,7 +17,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "acess_deny")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class AcessDeny extends AbstractAuditingEntity implements Serializable {
+public class AcessDeny implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
