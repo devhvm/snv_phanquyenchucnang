@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.Optional;
@@ -75,5 +76,24 @@ public class UserService {
             }
         );
         return users;
+    }
+
+    /**
+     * Get all the Users.
+     *
+     * @return the list of entities
+     */
+    @Transactional(readOnly = true)
+    public Optional<UserDTO> getUser(String login) {
+        log.debug("Request to get User by login");
+        UserDTO userDTO = userServiceClient.getUser(login);
+        Optional<DonViNguoiDung> donViNguoiDung = donViNguoiDungService.findByLogin(login);
+        if (donViNguoiDung.isPresent()) {
+            userDTO.setCoQuanHanhChinhId(donViNguoiDung.get().getCoQuanHanhChinhId());
+            ResponseEntity<CoQuanHanhChinhDTO> coQuanHanhChinhDTO = quyTrinhDonViServiceClient.getQuyTrinhDonVi(donViNguoiDung.get().getCoQuanHanhChinhId());
+            if (coQuanHanhChinhDTO != null)
+                userDTO.setCoQuanHanhChinhName(coQuanHanhChinhDTO.getBody().getName());
+        }
+        return Optional.of(userDTO);
     }
 }

@@ -18,4 +18,9 @@ public class UserServiceClientFallback implements UserServiceClient {
     public ResponseEntity<UserDTO> createUser(UserDTO userDTO) throws RuntimeException {
         return null;
     }
+
+    @Override
+    public UserDTO getUser(String login) throws RuntimeException {
+        return null;
+    }
 }
