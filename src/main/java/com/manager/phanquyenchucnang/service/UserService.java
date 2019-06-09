@@ -91,8 +91,10 @@ public class UserService {
         if (donViNguoiDung.isPresent()) {
             userDTO.setCoQuanHanhChinhId(donViNguoiDung.get().getCoQuanHanhChinhId());
             ResponseEntity<CoQuanHanhChinhDTO> coQuanHanhChinhDTO = quyTrinhDonViServiceClient.getQuyTrinhDonVi(donViNguoiDung.get().getCoQuanHanhChinhId());
-            if (coQuanHanhChinhDTO != null)
+            if (coQuanHanhChinhDTO != null) {
                 userDTO.setCoQuanHanhChinhName(coQuanHanhChinhDTO.getBody().getName());
+                userDTO.setCoQuanHanhChinhCode(coQuanHanhChinhDTO.getBody().getCoQuanHanhChinhCode());
+            }
         }
         return Optional.of(userDTO);
     }

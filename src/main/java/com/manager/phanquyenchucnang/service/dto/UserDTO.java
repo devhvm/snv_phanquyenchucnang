@@ -53,6 +53,8 @@ public class UserDTO {
 
     private Long coQuanHanhChinhId;
 
+    private String coQuanHanhChinhCode;
+
     public UserDTO() {
         // Empty constructor needed for Jackson.
     }
@@ -195,6 +197,14 @@ public class UserDTO {
         this.coQuanHanhChinhId = coQuanHanhChinhId;
     }
 
+    public String getCoQuanHanhChinhCode() {
+        return coQuanHanhChinhCode;
+    }
+
+    public void setCoQuanHanhChinhCode(String coQuanHanhChinhCode) {
+        this.coQuanHanhChinhCode = coQuanHanhChinhCode;
+    }
+
     @Override
     public String toString() {
         return "UserDTO{" +
@@ -211,6 +221,7 @@ public class UserDTO {
             ", lastModifiedDate=" + lastModifiedDate +
             ", coQuanHanhChinhId=" + coQuanHanhChinhId +
             ", coQuanHanhChinhName=" + coQuanHanhChinhName +
+            ", coQuanHanhChinhCode=" + coQuanHanhChinhCode +
             ", authorities=" + authorities +
             "}";
     }
