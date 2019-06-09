@@ -150,3 +150,6 @@ jhipster:
 # ===================================================================
 
 # application:
+snv:
+    gateway: http://localhost:15050
+    quytrinhdonvi: http://vtools.xyz:9999/quytrinhdonvi
