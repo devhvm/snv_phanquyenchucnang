@@ -8,6 +8,7 @@ import com.manager.phanquyenchucnang.service.dto.UserDTO;
 import com.manager.phanquyenchucnang.web.rest.errors.BadRequestAlertException;
 import com.manager.phanquyenchucnang.web.rest.util.HeaderUtil;
 import com.manager.phanquyenchucnang.web.rest.util.PaginationUtil;
+import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -21,6 +22,7 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * REST controller for managing Menu.
@@ -51,6 +53,18 @@ public class NguoiDungResource {
     public ResponseEntity<List<UserDTO>> getAllUsers() {
         log.debug("REST request to get all Users");
         return userService.findAll();
+    }
+
+    /**
+     * GET  /menus : get all the users.
+     *
+     * @return the ResponseEntity with status 200 (OK) and the list of menus in body
+     */
+    @GetMapping("/nguoiDung/{login}")
+    public ResponseEntity<UserDTO> getUser(@PathVariable String login) {
+        log.debug("REST request to get User by login");
+        Optional<UserDTO> userDTO = userService.getUser(login);
+        return ResponseUtil.wrapOrNotFound(userDTO);
     }
 
 
