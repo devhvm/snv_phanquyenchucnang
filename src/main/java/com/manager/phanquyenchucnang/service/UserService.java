@@ -46,9 +46,6 @@ public class UserService {
         ResponseEntity<UserDTO> responseEntity = userServiceClient.createUser(userDTO);
         if (responseEntity == null)
             throw new InternalServerErrorException("đăng ký user không thành công");
-        if (responseEntity.getStatusCode() != HttpStatus.OK) {
-            throw new InternalServerErrorException("đăng ký user không thành công " + responseEntity.getStatusCode());
-        }
         DonViNguoiDung donViNguoiDung = new DonViNguoiDung();
         donViNguoiDung.setLogin(userDTO.getLogin());
         donViNguoiDung.setCoQuanHanhChinhId(userDTO.getCoQuanHanhChinhId());
