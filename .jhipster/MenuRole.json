@@ -2,7 +2,7 @@
     "name": "MenuRole",
     "fields": [
         {
-            "fieldName": "menuRoleCode",
+            "fieldName": "menuItemRoleCode",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required"
@@ -26,10 +26,10 @@
     "relationships": [
         {
             "relationshipType": "many-to-one",
-            "otherEntityName": "menu",
+            "otherEntityName": "menuItem",
             "otherEntityRelationshipName": "menurole",
-            "relationshipName": "menu",
-            "otherEntityField": "menuCode"
+            "relationshipName": "menuItem",
+            "otherEntityField": "name"
         }
     ],
     "changelogDate": "20190409161527",
@@ -39,7 +39,7 @@
     "service": "serviceClass",
     "jpaMetamodelFiltering": false,
     "fluentMethods": true,
-    "clientRootFolder": "",
+    "clientRootFolder": "phanquyenchucnang",
     "applications": [
         "phanquyenchucnang"
     ],

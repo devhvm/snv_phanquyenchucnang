@@ -31,7 +31,7 @@ public class AcessDeny extends AbstractAuditingEntity implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties("acessdenies")
-    private Menu menu;
+    private MenuItem menuItem;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -55,17 +55,17 @@ public class AcessDeny extends AbstractAuditingEntity implements Serializable {
         this.userId = userId;
     }
 
-    public Menu getMenu() {
-        return menu;
+    public MenuItem getMenuItem() {
+        return menuItem;
     }
 
-    public AcessDeny menu(Menu menu) {
-        this.menu = menu;
+    public AcessDeny menuItem(MenuItem menuItem) {
+        this.menuItem = menuItem;
         return this;
     }
 
-    public void setMenu(Menu menu) {
-        this.menu = menu;
+    public void setMenuItem(MenuItem menuItem) {
+        this.menuItem = menuItem;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

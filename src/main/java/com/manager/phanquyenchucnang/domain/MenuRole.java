@@ -26,8 +26,8 @@ public class MenuRole extends AbstractAuditingEntity implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "menu_role_code", nullable = false)
-    private String menuRoleCode;
+    @Column(name = "menu_item_role_code", nullable = false)
+    private String menuItemRoleCode;
 
     @NotNull
     @Column(name = "jhi_role", nullable = false)
@@ -39,7 +39,7 @@ public class MenuRole extends AbstractAuditingEntity implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties("menuroles")
-    private Menu menu;
+    private MenuItem menuItem;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -50,17 +50,17 @@ public class MenuRole extends AbstractAuditingEntity implements Serializable {
         this.id = id;
     }
 
-    public String getMenuRoleCode() {
-        return menuRoleCode;
+    public String getMenuItemRoleCode() {
+        return menuItemRoleCode;
     }
 
-    public MenuRole menuRoleCode(String menuRoleCode) {
-        this.menuRoleCode = menuRoleCode;
+    public MenuRole menuItemRoleCode(String menuItemRoleCode) {
+        this.menuItemRoleCode = menuItemRoleCode;
         return this;
     }
 
-    public void setMenuRoleCode(String menuRoleCode) {
-        this.menuRoleCode = menuRoleCode;
+    public void setMenuItemRoleCode(String menuItemRoleCode) {
+        this.menuItemRoleCode = menuItemRoleCode;
     }
 
     public String getRole() {
@@ -89,17 +89,17 @@ public class MenuRole extends AbstractAuditingEntity implements Serializable {
         this.name = name;
     }
 
-    public Menu getMenu() {
-        return menu;
+    public MenuItem getMenuItem() {
+        return menuItem;
     }
 
-    public MenuRole menu(Menu menu) {
-        this.menu = menu;
+    public MenuRole menuItem(MenuItem menuItem) {
+        this.menuItem = menuItem;
         return this;
     }
 
-    public void setMenu(Menu menu) {
-        this.menu = menu;
+    public void setMenuItem(MenuItem menuItem) {
+        this.menuItem = menuItem;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -127,7 +127,7 @@ public class MenuRole extends AbstractAuditingEntity implements Serializable {
     public String toString() {
         return "MenuRole{" +
             "id=" + getId() +
-            ", menuRoleCode='" + getMenuRoleCode() + "'" +
+            ", menuItemRoleCode='" + getMenuItemRoleCode() + "'" +
             ", role='" + getRole() + "'" +
             ", name='" + getName() + "'" +
             "}";

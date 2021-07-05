@@ -12,10 +12,10 @@
     "relationships": [
         {
             "relationshipType": "many-to-one",
-            "otherEntityName": "menu",
+            "otherEntityName": "menuItem",
             "otherEntityRelationshipName": "acessdeny",
-            "relationshipName": "menu",
-            "otherEntityField": "menuCode"
+            "relationshipName": "menuItem",
+            "otherEntityField": "id"
         }
     ],
     "changelogDate": "20190409161526",
@@ -25,7 +25,7 @@
     "service": "serviceClass",
     "jpaMetamodelFiltering": false,
     "fluentMethods": true,
-    "clientRootFolder": "",
+    "clientRootFolder": "phanquyenchucnang",
     "applications": [
         "phanquyenchucnang"
     ],

@@ -43,8 +43,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = PhanquyenchucnangApp.class)
 public class MenuRoleResourceIntTest {
 
-    private static final String DEFAULT_MENU_ROLE_CODE = "AAAAAAAAAA";
-    private static final String UPDATED_MENU_ROLE_CODE = "BBBBBBBBBB";
+    private static final String DEFAULT_MENU_ITEM_ROLE_CODE = "AAAAAAAAAA";
+    private static final String UPDATED_MENU_ITEM_ROLE_CODE = "BBBBBBBBBB";
 
     private static final String DEFAULT_ROLE = "AAAAAAAAAA";
     private static final String UPDATED_ROLE = "BBBBBBBBBB";
@@ -100,7 +100,7 @@ public class MenuRoleResourceIntTest {
      */
     public static MenuRole createEntity(EntityManager em) {
         MenuRole menuRole = new MenuRole()
-            .menuRoleCode(DEFAULT_MENU_ROLE_CODE)
+            .menuItemRoleCode(DEFAULT_MENU_ITEM_ROLE_CODE)
             .role(DEFAULT_ROLE)
             .name(DEFAULT_NAME);
         return menuRole;
@@ -127,7 +127,7 @@ public class MenuRoleResourceIntTest {
         List<MenuRole> menuRoleList = menuRoleRepository.findAll();
         assertThat(menuRoleList).hasSize(databaseSizeBeforeCreate + 1);
         MenuRole testMenuRole = menuRoleList.get(menuRoleList.size() - 1);
-        assertThat(testMenuRole.getMenuRoleCode()).isEqualTo(DEFAULT_MENU_ROLE_CODE);
+        assertThat(testMenuRole.getMenuItemRoleCode()).isEqualTo(DEFAULT_MENU_ITEM_ROLE_CODE);
         assertThat(testMenuRole.getRole()).isEqualTo(DEFAULT_ROLE);
         assertThat(testMenuRole.getName()).isEqualTo(DEFAULT_NAME);
     }
@@ -154,10 +154,10 @@ public class MenuRoleResourceIntTest {
 
     @Test
     @Transactional
-    public void checkMenuRoleCodeIsRequired() throws Exception {
+    public void checkMenuItemRoleCodeIsRequired() throws Exception {
         int databaseSizeBeforeTest = menuRoleRepository.findAll().size();
         // set the field null
-        menuRole.setMenuRoleCode(null);
+        menuRole.setMenuItemRoleCode(null);
 
         // Create the MenuRole, which fails.
         MenuRoleDTO menuRoleDTO = menuRoleMapper.toDto(menuRole);
@@ -220,7 +220,7 @@ public class MenuRoleResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(menuRole.getId().intValue())))
-            .andExpect(jsonPath("$.[*].menuRoleCode").value(hasItem(DEFAULT_MENU_ROLE_CODE.toString())))
+            .andExpect(jsonPath("$.[*].menuItemRoleCode").value(hasItem(DEFAULT_MENU_ITEM_ROLE_CODE.toString())))
             .andExpect(jsonPath("$.[*].role").value(hasItem(DEFAULT_ROLE.toString())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())));
     }
@@ -236,7 +236,7 @@ public class MenuRoleResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(menuRole.getId().intValue()))
-            .andExpect(jsonPath("$.menuRoleCode").value(DEFAULT_MENU_ROLE_CODE.toString()))
+            .andExpect(jsonPath("$.menuItemRoleCode").value(DEFAULT_MENU_ITEM_ROLE_CODE.toString()))
             .andExpect(jsonPath("$.role").value(DEFAULT_ROLE.toString()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()));
     }
@@ -262,7 +262,7 @@ public class MenuRoleResourceIntTest {
         // Disconnect from session so that the updates on updatedMenuRole are not directly saved in db
         em.detach(updatedMenuRole);
         updatedMenuRole
-            .menuRoleCode(UPDATED_MENU_ROLE_CODE)
+            .menuItemRoleCode(UPDATED_MENU_ITEM_ROLE_CODE)
             .role(UPDATED_ROLE)
             .name(UPDATED_NAME);
         MenuRoleDTO menuRoleDTO = menuRoleMapper.toDto(updatedMenuRole);
@@ -276,7 +276,7 @@ public class MenuRoleResourceIntTest {
         List<MenuRole> menuRoleList = menuRoleRepository.findAll();
         assertThat(menuRoleList).hasSize(databaseSizeBeforeUpdate);
         MenuRole testMenuRole = menuRoleList.get(menuRoleList.size() - 1);
-        assertThat(testMenuRole.getMenuRoleCode()).isEqualTo(UPDATED_MENU_ROLE_CODE);
+        assertThat(testMenuRole.getMenuItemRoleCode()).isEqualTo(UPDATED_MENU_ITEM_ROLE_CODE);
         assertThat(testMenuRole.getRole()).isEqualTo(UPDATED_ROLE);
         assertThat(testMenuRole.getName()).isEqualTo(UPDATED_NAME);
     }

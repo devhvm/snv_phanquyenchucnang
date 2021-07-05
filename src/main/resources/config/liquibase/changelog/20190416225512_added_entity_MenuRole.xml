@@ -15,14 +15,18 @@
     <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
 
     <!--
-        Added the entity Screen.
+        Added the entity MenuRole.
     -->
-    <changeSet id="20190409161525-1" author="jhipster">
-        <createTable tableName="screen">
+    <changeSet id="20190416225512-1" author="jhipster">
+        <createTable tableName="menu_role">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="screen_code" type="varchar(255)">
+            <column name="menu_item_role_code" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="jhi_role" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
 
@@ -30,8 +34,8 @@
                 <constraints nullable="false" />
             </column>
 
-            <column name="jhi_link" type="varchar(255)">
-                <constraints nullable="false" />
+            <column name="menu_item_id" type="bigint">
+                <constraints nullable="true" />
             </column>
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
@@ -40,22 +44,8 @@
     </changeSet>
     
     <!-- Added the entity audit columns -->
-    <changeSet id="20190409161931-audit-1" author="jhipster-entity-audit">
-        <addColumn tableName="screen">
-            <column name="created_by" type="varchar(50)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="created_date" type="timestamp" defaultValueDate="${now}">
-                <constraints nullable="false"/>
-            </column>
-            <column name="last_modified_by" type="varchar(50)"/>
-            <column name="last_modified_date" type="timestamp"/>
-        </addColumn>
-    </changeSet>
-    
-    <!-- Added the entity audit columns -->
-    <changeSet id="20190409162655-audit-1" author="jhipster-entity-audit">
-        <addColumn tableName="screen">
+    <changeSet id="20190423162904-audit-1" author="jhipster-entity-audit">
+        <addColumn tableName="menu_role">
             <column name="created_by" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>

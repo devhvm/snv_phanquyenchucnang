@@ -2,7 +2,6 @@ package com.manager.phanquyenchucnang.domain;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -40,20 +39,9 @@ public class Menu extends AbstractAuditingEntity implements Serializable {
     @Column(name = "icon", nullable = false)
     private String icon;
 
-    @NotNull
-    @Column(name = "parent_code", nullable = false)
-    private String parentCode;
-
     @OneToMany(mappedBy = "menu")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<AcessDeny> acessdenies = new HashSet<>();
-    @OneToMany(mappedBy = "menu")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<MenuRole> menuroles = new HashSet<>();
-    @ManyToOne
-    @JsonIgnoreProperties("menus")
-    private Screen screen;
-
+    private Set<MenuItem> menuItems = new HashSet<>();
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -102,80 +90,29 @@ public class Menu extends AbstractAuditingEntity implements Serializable {
         this.icon = icon;
     }
 
-    public String getParentCode() {
-        return parentCode;
+    public Set<MenuItem> getMenuItems() {
+        return menuItems;
     }
 
-    public Menu parentCode(String parentCode) {
-        this.parentCode = parentCode;
+    public Menu menuItems(Set<MenuItem> menuItems) {
+        this.menuItems = menuItems;
         return this;
     }
 
-    public void setParentCode(String parentCode) {
-        this.parentCode = parentCode;
-    }
-
-    public Set<AcessDeny> getAcessdenies() {
-        return acessdenies;
-    }
-
-    public Menu acessdenies(Set<AcessDeny> acessDenies) {
-        this.acessdenies = acessDenies;
+    public Menu addMenuItem(MenuItem menuItem) {
+        this.menuItems.add(menuItem);
+        menuItem.setMenu(this);
         return this;
     }
 
-    public Menu addAcessdeny(AcessDeny acessDeny) {
-        this.acessdenies.add(acessDeny);
-        acessDeny.setMenu(this);
+    public Menu removeMenuItem(MenuItem menuItem) {
+        this.menuItems.remove(menuItem);
+        menuItem.setMenu(null);
         return this;
     }
 
-    public Menu removeAcessdeny(AcessDeny acessDeny) {
-        this.acessdenies.remove(acessDeny);
-        acessDeny.setMenu(null);
-        return this;
-    }
-
-    public void setAcessdenies(Set<AcessDeny> acessDenies) {
-        this.acessdenies = acessDenies;
-    }
-
-    public Set<MenuRole> getMenuroles() {
-        return menuroles;
-    }
-
-    public Menu menuroles(Set<MenuRole> menuRoles) {
-        this.menuroles = menuRoles;
-        return this;
-    }
-
-    public Menu addMenurole(MenuRole menuRole) {
-        this.menuroles.add(menuRole);
-        menuRole.setMenu(this);
-        return this;
-    }
-
-    public Menu removeMenurole(MenuRole menuRole) {
-        this.menuroles.remove(menuRole);
-        menuRole.setMenu(null);
-        return this;
-    }
-
-    public void setMenuroles(Set<MenuRole> menuRoles) {
-        this.menuroles = menuRoles;
-    }
-
-    public Screen getScreen() {
-        return screen;
-    }
-
-    public Menu screen(Screen screen) {
-        this.screen = screen;
-        return this;
-    }
-
-    public void setScreen(Screen screen) {
-        this.screen = screen;
+    public void setMenuItems(Set<MenuItem> menuItems) {
+        this.menuItems = menuItems;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -206,7 +143,6 @@ public class Menu extends AbstractAuditingEntity implements Serializable {
             ", menuCode='" + getMenuCode() + "'" +
             ", name='" + getName() + "'" +
             ", icon='" + getIcon() + "'" +
-            ", parentCode='" + getParentCode() + "'" +
             "}";
     }
 }

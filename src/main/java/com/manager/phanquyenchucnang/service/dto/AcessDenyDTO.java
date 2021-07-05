@@ -14,9 +14,7 @@ public class AcessDenyDTO extends AbstractAuditingDTO implements Serializable {
     private String userId;
 
 
-    private Long menuId;
-
-    private String menuMenuCode;
+    private Long menuItemId;
 
     public Long getId() {
         return id;
@@ -34,20 +32,12 @@ public class AcessDenyDTO extends AbstractAuditingDTO implements Serializable {
         this.userId = userId;
     }
 
-    public Long getMenuId() {
-        return menuId;
+    public Long getMenuItemId() {
+        return menuItemId;
     }
 
-    public void setMenuId(Long menuId) {
-        this.menuId = menuId;
-    }
-
-    public String getMenuMenuCode() {
-        return menuMenuCode;
-    }
-
-    public void setMenuMenuCode(String menuMenuCode) {
-        this.menuMenuCode = menuMenuCode;
+    public void setMenuItemId(Long menuItemId) {
+        this.menuItemId = menuItemId;
     }
 
     @Override
@@ -76,8 +66,7 @@ public class AcessDenyDTO extends AbstractAuditingDTO implements Serializable {
         return "AcessDenyDTO{" +
             "id=" + getId() +
             ", userId='" + getUserId() + "'" +
-            ", menu=" + getMenuId() +
-            ", menu='" + getMenuMenuCode() + "'" +
+            ", menuItem=" + getMenuItemId() +
             "}";
     }
 }

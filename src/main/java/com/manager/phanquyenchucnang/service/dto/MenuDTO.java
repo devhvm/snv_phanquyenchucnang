@@ -19,13 +19,6 @@ public class MenuDTO extends AbstractAuditingDTO implements Serializable {
     @NotNull
     private String icon;
 
-    @NotNull
-    private String parentCode;
-
-
-    private Long screenId;
-
-    private String screenScreenCode;
 
     public Long getId() {
         return id;
@@ -59,30 +52,6 @@ public class MenuDTO extends AbstractAuditingDTO implements Serializable {
         this.icon = icon;
     }
 
-    public String getParentCode() {
-        return parentCode;
-    }
-
-    public void setParentCode(String parentCode) {
-        this.parentCode = parentCode;
-    }
-
-    public Long getScreenId() {
-        return screenId;
-    }
-
-    public void setScreenId(Long screenId) {
-        this.screenId = screenId;
-    }
-
-    public String getScreenScreenCode() {
-        return screenScreenCode;
-    }
-
-    public void setScreenScreenCode(String screenScreenCode) {
-        this.screenScreenCode = screenScreenCode;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -111,9 +80,6 @@ public class MenuDTO extends AbstractAuditingDTO implements Serializable {
             ", menuCode='" + getMenuCode() + "'" +
             ", name='" + getName() + "'" +
             ", icon='" + getIcon() + "'" +
-            ", parentCode='" + getParentCode() + "'" +
-            ", screen=" + getScreenId() +
-            ", screen='" + getScreenScreenCode() + "'" +
             "}";
     }
 }

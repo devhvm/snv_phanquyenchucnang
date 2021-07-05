@@ -1,7 +1,7 @@
 {
   "generator-jhipster": {
     "databaseType": "sql",
-    "devDatabaseType": "h2Disk",
+    "devDatabaseType": "mysql",
     "enableHibernateCache": true,
     "enableSwaggerCodegen": false,
     "enableTranslation": true,
@@ -36,6 +36,7 @@
   },
   "entities": [
     "Menu",
+    "MenuItem",
     "Screen",
     "AcessDeny",
     "MenuRole"

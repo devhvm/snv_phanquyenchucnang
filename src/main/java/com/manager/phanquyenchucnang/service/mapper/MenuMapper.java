@@ -8,16 +8,11 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity Menu and its DTO MenuDTO.
  */
-@Mapper(componentModel = "spring", uses = {ScreenMapper.class})
+@Mapper(componentModel = "spring", uses = {})
 public interface MenuMapper extends EntityMapper<MenuDTO, Menu> {
 
-    @Mapping(source = "screen.id", target = "screenId")
-    @Mapping(source = "screen.screenCode", target = "screenScreenCode")
-    MenuDTO toDto(Menu menu);
 
-    @Mapping(target = "acessdenies", ignore = true)
-    @Mapping(target = "menuroles", ignore = true)
-    @Mapping(source = "screenId", target = "screen")
+    @Mapping(target = "menuItems", ignore = true)
     Menu toEntity(MenuDTO menuDTO);
 
     default Menu fromId(Long id) {

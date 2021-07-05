@@ -8,14 +8,14 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity MenuRole and its DTO MenuRoleDTO.
  */
-@Mapper(componentModel = "spring", uses = {MenuMapper.class})
+@Mapper(componentModel = "spring", uses = {MenuItemMapper.class})
 public interface MenuRoleMapper extends EntityMapper<MenuRoleDTO, MenuRole> {
 
-    @Mapping(source = "menu.id", target = "menuId")
-    @Mapping(source = "menu.menuCode", target = "menuMenuCode")
+    @Mapping(source = "menuItem.id", target = "menuItemId")
+    @Mapping(source = "menuItem.name", target = "menuItemName")
     MenuRoleDTO toDto(MenuRole menuRole);
 
-    @Mapping(source = "menuId", target = "menu")
+    @Mapping(source = "menuItemId", target = "menuItem")
     MenuRole toEntity(MenuRoleDTO menuRoleDTO);
 
     default MenuRole fromId(Long id) {

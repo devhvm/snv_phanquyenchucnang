@@ -14,19 +14,12 @@
             "fieldValidateRules": [
                 "required"
             ]
-        },
-        {
-            "fieldName": "link",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
         }
     ],
     "relationships": [
         {
             "relationshipType": "one-to-many",
-            "otherEntityName": "menu",
+            "otherEntityName": "menuItem",
             "otherEntityRelationshipName": "screen",
             "relationshipName": "menu"
         }
@@ -38,7 +31,7 @@
     "service": "serviceClass",
     "jpaMetamodelFiltering": false,
     "fluentMethods": true,
-    "clientRootFolder": "",
+    "clientRootFolder": "phanquyenchucnang",
     "applications": [
         "phanquyenchucnang"
     ],

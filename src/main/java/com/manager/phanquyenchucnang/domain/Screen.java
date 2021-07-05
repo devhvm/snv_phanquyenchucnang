@@ -35,13 +35,9 @@ public class Screen extends AbstractAuditingEntity implements Serializable {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @NotNull
-    @Column(name = "jhi_link", nullable = false)
-    private String link;
-
     @OneToMany(mappedBy = "screen")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Menu> menus = new HashSet<>();
+    private Set<MenuItem> menus = new HashSet<>();
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -77,42 +73,29 @@ public class Screen extends AbstractAuditingEntity implements Serializable {
         this.name = name;
     }
 
-    public String getLink() {
-        return link;
-    }
-
-    public Screen link(String link) {
-        this.link = link;
-        return this;
-    }
-
-    public void setLink(String link) {
-        this.link = link;
-    }
-
-    public Set<Menu> getMenus() {
+    public Set<MenuItem> getMenus() {
         return menus;
     }
 
-    public Screen menus(Set<Menu> menus) {
-        this.menus = menus;
+    public Screen menus(Set<MenuItem> menuItems) {
+        this.menus = menuItems;
         return this;
     }
 
-    public Screen addMenu(Menu menu) {
-        this.menus.add(menu);
-        menu.setScreen(this);
+    public Screen addMenu(MenuItem menuItem) {
+        this.menus.add(menuItem);
+        menuItem.setScreen(this);
         return this;
     }
 
-    public Screen removeMenu(Menu menu) {
-        this.menus.remove(menu);
-        menu.setScreen(null);
+    public Screen removeMenu(MenuItem menuItem) {
+        this.menus.remove(menuItem);
+        menuItem.setScreen(null);
         return this;
     }
 
-    public void setMenus(Set<Menu> menus) {
-        this.menus = menus;
+    public void setMenus(Set<MenuItem> menuItems) {
+        this.menus = menuItems;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -142,7 +125,6 @@ public class Screen extends AbstractAuditingEntity implements Serializable {
             "id=" + getId() +
             ", screenCode='" + getScreenCode() + "'" +
             ", name='" + getName() + "'" +
-            ", link='" + getLink() + "'" +
             "}";
     }
 }

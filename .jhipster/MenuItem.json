@@ -1,0 +1,76 @@
+{
+    "name": "MenuItem",
+    "fields": [
+        {
+            "fieldName": "menuItemCode",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "icon",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "parrentCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "ordNumber",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "link",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "acessDeny",
+            "otherEntityRelationshipName": "menuItem",
+            "relationshipName": "acessdeny"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "menuRole",
+            "otherEntityRelationshipName": "menuItem",
+            "relationshipName": "menurole"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "screen",
+            "otherEntityRelationshipName": "menu",
+            "relationshipName": "screen",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "menu",
+            "otherEntityRelationshipName": "menuItem",
+            "relationshipName": "menu",
+            "otherEntityField": "name"
+        }
+    ],
+    "changelogDate": "20190416220519",
+    "entityTableName": "menu_item",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "phanquyenchucnang",
+    "applications": [
+        "phanquyenchucnang"
+    ],
+    "microserviceName": "phanquyenchucnang",
+    "enableEntityAudit": true
+}
